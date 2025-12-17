@@ -3,174 +3,126 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>My First Repo</title>
+<title>D. Charles — Portfolio</title>
 
 <style>
-:root{
---bg: #0b0f1a;
---card: rgba(255,255,255,.06);
---stroke: rgba(255,255,255,.14);
---text: rgba(255,255,255,.92);
---muted: rgba(255,255,255,.68);
---accent1: #7c3aed; /* purple */
---accent2: #22d3ee; /* cyan */
-}
-
 * { box-sizing: border-box; }
-html, body { height: 100%; }
 
 body{
-margin: 0;
-font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-color: var(--text);
+margin:0;
+min-height:100vh;
+display:grid;
+place-items:center;
+font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+color:#ffffff;
 background:
-radial-gradient(900px 500px at 20% 15%, rgba(124,58,237,.35), transparent 60%),
-radial-gradient(900px 500px at 80% 25%, rgba(34,211,238,.25), transparent 55%),
-radial-gradient(700px 400px at 50% 90%, rgba(255,255,255,.08), transparent 55%),
-linear-gradient(180deg, #050713 0%, var(--bg) 100%);
-display: grid;
-place-items: center;
-padding: 24px;
-overflow: hidden;
-}
-
-/* subtle floating dots */
-.bg-dots{
-position: fixed;
-inset: -40px;
-background-image: radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
-background-size: 28px 28px;
-filter: blur(.2px);
-opacity: .25;
-mask-image: radial-gradient(circle at center, black 35%, transparent 70%);
-pointer-events: none;
-transform: translateZ(0);
-animation: drift 14s ease-in-out infinite alternate;
-}
-
-@keyframes drift{
-from { transform: translate(-6px,-10px) scale(1.02); }
-to { transform: translate(10px, 8px) scale(1.04); }
-}
-
-.wrap{
-width: min(880px, 100%);
-display: grid;
-gap: 18px;
-justify-items: center;
-text-align: center;
-}
-
-.badge{
-display: inline-flex;
-align-items: center;
-gap: 10px;
-padding: 10px 14px;
-border: 1px solid var(--stroke);
-border-radius: 999px;
-background: rgba(255,255,255,.04);
-backdrop-filter: blur(10px);
-font-size: 13px;
-color: var(--muted);
-letter-spacing: .2px;
-}
-
-.pulse{
-width: 10px; height: 10px; border-radius: 999px;
-background: linear-gradient(135deg, var(--accent1), var(--accent2));
-box-shadow: 0 0 0 0 rgba(34,211,238,.45);
-animation: pulse 1.8s ease-out infinite;
-}
-@keyframes pulse{
-0% { box-shadow: 0 0 0 0 rgba(34,211,238,.0); }
-35% { box-shadow: 0 0 0 10px rgba(34,211,238,.14); }
-100% { box-shadow: 0 0 0 18px rgba(34,211,238,.0); }
-}
-
-h1{
-margin: 0;
-font-size: clamp(2rem, 4vw, 3.2rem);
-line-height: 1.05;
-letter-spacing: -0.02em;
-}
-
-.grad{
-background: linear-gradient(90deg, #fff, rgba(255,255,255,.86), rgba(34,211,238,.95));
--webkit-background-clip: text;
-background-clip: text;
-color: transparent;
-}
-
-p{
-margin: 0;
-color: var(--muted);
-font-size: clamp(1rem, 1.7vw, 1.15rem);
-line-height: 1.6;
-max-width: 60ch;
+radial-gradient(900px 500px at 20% 15%, rgba(124,58,237,.40), transparent 60%),
+radial-gradient(900px 500px at 80% 25%, rgba(34,211,238,.28), transparent 55%),
+linear-gradient(180deg, #050713 0%, #0b0f1a 100%);
+padding:24px;
 }
 
 .card{
-width: min(720px, 100%);
-border-radius: 18px;
-background: var(--card);
-border: 1px solid var(--stroke);
-padding: 22px 22px;
+width:min(720px, 100%);
+background: rgba(255,255,255,.07);
+border:1px solid rgba(255,255,255,.18);
+border-radius:18px;
+padding:32px 30px;
 backdrop-filter: blur(14px);
-box-shadow:
-0 20px 50px rgba(0,0,0,.45),
-0 0 0 1px rgba(255,255,255,.03) inset;
-position: relative;
-overflow: hidden;
-transform: translateY(0);
-transition: transform .25s ease, border-color .25s ease;
+box-shadow: 0 20px 60px rgba(0,0,0,.45);
 }
 
-.card::before{
-content:"";
-position: absolute;
-inset: -2px;
-background: radial-gradient(600px 220px at 30% 10%, rgba(124,58,237,.25), transparent 55%),
-radial-gradient(600px 220px at 70% 0%, rgba(34,211,238,.20), transparent 55%);
-opacity: .9;
-pointer-events: none;
+h1{
+margin:0 0 8px;
+font-size:clamp(2rem,4vw,3rem);
+letter-spacing:-.02em;
 }
 
-.card:hover{
-transform: translateY(-4px);
-border-color: rgba(255,255,255,.22);
+h2{
+margin:0 0 18px;
+font-size:1.05rem;
+font-weight:500;
+color:rgba(255,255,255,.75);
 }
 
-.row{
-display: flex;
-gap: 12px;
-justify-content: center;
-flex-wrap: wrap;
-margin-top: 14px;
-position: relative;
-z-index: 1;
+p{
+margin:0 0 18px;
+color:rgba(255,255,255,.82);
+line-height:1.6;
+font-size:1.05rem;
+max-width:60ch;
 }
 
-a.btn{
-text-decoration: none;
-display: inline-flex;
-align-items: center;
-gap: 10px;
-padding: 11px 14px;
-border-radius: 12px;
-border: 1px solid rgba(255,255,255,.18);
-background: rgba(255,255,255,.06);
-color: var(--text);
-font-size: 14px;
-transition: transform .2s ease, background .2s ease, border-color .2s ease;
+.tags{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-top:8px;
 }
 
-a.btn:hover{
+.tag{
+font-size:13px;
+padding:6px 12px;
+border-radius:999px;
+background:rgba(255,255,255,.10);
+border:1px solid rgba(255,255,255,.18);
+color:rgba(255,255,255,.85);
+}
+
+.links{
+display:flex;
+gap:14px;
+margin-top:22px;
+flex-wrap:wrap;
+}
+
+a{
+text-decoration:none;
+font-size:14px;
+padding:10px 14px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,.22);
+background:rgba(255,255,255,.08);
+color:#fff;
+transition: transform .2s ease, background .2s ease;
+}
+
+a:hover{
 transform: translateY(-2px);
-background: rgba(255,255,255,.10);
-border-color: rgba(255,255,255,.26);
+background:rgba(255,255,255,.14);
 }
+</style>
+</head>
 
-.primary{
-border: none !important;
-background: linear-gradient(
+<body>
+<div class="card">
+<h1>D. Charles</h1>
+<h2>IT & Cybersecurity Student · Builder in Progress</h2>
+
+<p>
+I’m learning my way through modern tech — starting with fundamentals like
+HTML, CSS, Git, and deployment — and building real projects along the way.
+This site marks my first live deployment.
+</p>
+
+<p>
+I’m focused on consistency, clean systems, and understanding how things
+actually work under the hood.
+</p>
+
+<div class="tags">
+<span class="tag">HTML</span>
+<span class="tag">CSS</span>
+<span class="tag">GitHub</span>
+<span class="tag">GitHub Pages</span>
+<span class="tag">IT Fundamentals</span>
+</div>
+
+<div class="links">
+<a href="https://github.com/DCharles57" target="_blank">GitHub</a>
+<!-- later: projects, resume, LinkedIn -->
+</div>
+</div>
+</body>
+</html>
 
