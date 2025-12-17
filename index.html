@@ -3,126 +3,298 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>D. Charles — Portfolio</title>
+<title>Dutchen Charles — Portfolio</title>
 
 <style>
-* { box-sizing: border-box; }
+:root{
+--bg1:#050713;
+--bg2:#0b0f1a;
+--card:rgba(255,255,255,.07);
+--stroke:rgba(255,255,255,.18);
+--text:rgba(255,255,255,.92);
+--muted:rgba(255,255,255,.72);
+--a1:#7c3aed; /* purple */
+--a2:#22d3ee; /* cyan */
+}
+
+*{box-sizing:border-box}
 
 body{
 margin:0;
 min-height:100vh;
+font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+color:var(--text);
+background:
+radial-gradient(900px 520px at 18% 12%, rgba(124,58,237,.38), transparent 60%),
+radial-gradient(900px 520px at 82% 22%, rgba(34,211,238,.26), transparent 55%),
+linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%);
+padding:28px;
 display:grid;
 place-items:center;
-font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-color:#ffffff;
-background:
-radial-gradient(900px 500px at 20% 15%, rgba(124,58,237,.40), transparent 60%),
-radial-gradient(900px 500px at 80% 25%, rgba(34,211,238,.28), transparent 55%),
-linear-gradient(180deg, #050713 0%, #0b0f1a 100%);
-padding:24px;
+}
+
+.wrap{
+width:min(980px,100%);
+display:grid;
+gap:18px;
 }
 
 .card{
-width:min(720px, 100%);
-background: rgba(255,255,255,.07);
-border:1px solid rgba(255,255,255,.18);
+background:var(--card);
+border:1px solid var(--stroke);
 border-radius:18px;
-padding:32px 30px;
+padding:26px;
 backdrop-filter: blur(14px);
 box-shadow: 0 20px 60px rgba(0,0,0,.45);
 }
 
+.top{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+justify-content:space-between;
+}
+
 h1{
-margin:0 0 8px;
-font-size:clamp(2rem,4vw,3rem);
+margin:0;
+font-size:clamp(2.1rem,4vw,3.1rem);
 letter-spacing:-.02em;
 }
 
-h2{
-margin:0 0 18px;
-font-size:1.05rem;
+.subtitle{
+margin:6px 0 0;
+color:var(--muted);
 font-weight:500;
-color:rgba(255,255,255,.75);
 }
 
-p{
-margin:0 0 18px;
-color:rgba(255,255,255,.82);
-line-height:1.6;
-font-size:1.05rem;
-max-width:60ch;
-}
-
-.tags{
+.meta{
+margin-top:10px;
 display:flex;
 gap:10px;
 flex-wrap:wrap;
-margin-top:8px;
 }
 
-.tag{
+.pill{
 font-size:13px;
 padding:6px 12px;
 border-radius:999px;
-background:rgba(255,255,255,.10);
 border:1px solid rgba(255,255,255,.18);
+background:rgba(255,255,255,.08);
 color:rgba(255,255,255,.85);
+white-space:nowrap;
 }
 
-.links{
+.pill.accent{
+border:none;
+color:#061016;
+font-weight:700;
+background:linear-gradient(135deg,var(--a1),var(--a2));
+}
+
+.buttons{
 display:flex;
-gap:14px;
-margin-top:22px;
+gap:12px;
 flex-wrap:wrap;
+margin-top:14px;
 }
 
-a{
+a.btn{
 text-decoration:none;
-font-size:14px;
 padding:10px 14px;
 border-radius:12px;
 border:1px solid rgba(255,255,255,.22);
 background:rgba(255,255,255,.08);
 color:#fff;
+font-size:14px;
 transition: transform .2s ease, background .2s ease;
+display:inline-flex;
+align-items:center;
+gap:10px;
 }
 
-a:hover{
-transform: translateY(-2px);
+a.btn:hover{
+transform:translateY(-2px);
 background:rgba(255,255,255,.14);
+}
+
+a.btn.primary{
+border:none;
+color:#061016;
+font-weight:800;
+background:linear-gradient(135deg,var(--a1),var(--a2));
+}
+
+.grid{
+display:grid;
+grid-template-columns:1.1fr .9fr;
+gap:18px;
+}
+
+@media(max-width:860px){
+.grid{grid-template-columns:1fr;}
+}
+
+.sectionTitle{
+font-size:13px;
+letter-spacing:.14em;
+text-transform:uppercase;
+color:rgba(255,255,255,.55);
+margin:0 0 12px;
+}
+
+p{
+margin:0;
+color:rgba(255,255,255,.82);
+line-height:1.65;
+}
+
+.muted{color:rgba(255,255,255,.70);}
+
+.list{
+display:grid;
+gap:12px;
+}
+
+.item{
+border:1px solid rgba(255,255,255,.14);
+background:rgba(255,255,255,.05);
+border-radius:14px;
+padding:14px;
+}
+
+.itemTop{
+display:flex;
+justify-content:space-between;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.role{font-weight:800;}
+.when{font-size:13px;color:rgba(255,255,255,.55);}
+
+ul{
+margin:10px 0 0 18px;
+color:rgba(255,255,255,.80);
+line-height:1.55;
+}
+
+code{
+padding:2px 8px;
+border-radius:999px;
+background:rgba(255,255,255,.10);
+border:1px solid rgba(255,255,255,.16);
 }
 </style>
 </head>
 
 <body>
+<main class="wrap">
+
+<!-- HEADER -->
+<section class="card top">
+<div>
+<h1>Dutchen Charles</h1>
+<div class="subtitle">IT & Cybersecurity Student · Builder in Progress</div>
+
+<div class="meta">
+<span class="pill">Brooklyn, NY</span>
+<span class="pill">Bilingual: English + Haitian Creole</span>
+<span class="pill accent">Mission: CompTIA A+</span>
+</div>
+
+<div class="buttons">
+<a class="btn primary" href="mailto:Dutchencharles15@gmail.com">Email</a>
+<a class="btn" href="https://github.com/DCharles57" target="_blank" rel="noreferrer">GitHub ↗</a>
+<a class="btn" href="https://www.linkedin.com/in/dutchentech" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+</div>
+</div>
+
+<div class="muted">
+<div class="sectionTitle">Profile</div>
+<p>
+I’m building real-world IT skills from the ground up — learning
+<code>HTML</code>, <code>CSS</code>, <code>Git</code>, and deployment while sharpening
+troubleshooting, customer support, and systems thinking.
+</p>
+<p style="margin-top:12px;">
+I value clean systems, reliability, and understanding how technology actually works.
+</p>
+</div>
+</section>
+
+<!-- MAIN GRID -->
+<section class="grid">
+
+<!-- EXPERIENCE -->
 <div class="card">
-<h1>D. Charles</h1>
-<h2>IT & Cybersecurity Student · Builder in Progress</h2>
+<div class="sectionTitle">Mission Log</div>
+<div class="list">
 
-<p>
-I’m learning my way through modern tech — starting with fundamentals like
-HTML, CSS, Git, and deployment — and building real projects along the way.
-This site marks my first live deployment.
+<div class="item">
+<div class="itemTop">
+<div class="role">Spectrum Field Technician — Spectrum PCT</div>
+<div class="when">2022–2024</div>
+</div>
+<ul>
+<li>Installed, repaired, and troubleshot customer networking and telecom equipment.</li>
+<li>Diagnosed connectivity issues inside homes and on external utility lines.</li>
+</ul>
+</div>
+
+<div class="item">
+<div class="itemTop">
+<div class="role">Security Officer — Westhab / Allstar Security</div>
+<div class="when">2019–2020</div>
+</div>
+<ul>
+<li>Access control, monitoring, and incident awareness in residential environments.</li>
+</ul>
+</div>
+
+<div class="item">
+<div class="itemTop">
+<div class="role">After School Teacher — Hansteps</div>
+<div class="when">2015–2018</div>
+</div>
+<ul>
+<li>Explained complex topics simply — a key skill in IT support and security.</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<!-- SKILLS -->
+<div class="card">
+<div class="sectionTitle">Skills</div>
+
+<div class="meta">
+<span class="pill">Windows</span>
+<span class="pill">Linux (basic)</span>
+<span class="pill">PC Setup</span>
+<span class="pill">Troubleshooting</span>
+<span class="pill">LAN / WAN Basics</span>
+<span class="pill">Customer Support</span>
+<span class="pill">Access Control</span>
+<span class="pill">Risk Awareness</span>
+</div>
+
+<div style="margin-top:18px;">
+<div class="sectionTitle">Certifications</div>
+<p class="muted">CompTIA A+ (In Progress) · Security License (F01)</p>
+</div>
+
+<div style="margin-top:18px;">
+<div class="sectionTitle">Next</div>
+<p class="muted">
+Expanding this portfolio with hands-on projects and security-focused labs.
 </p>
-
-<p>
-I’m focused on consistency, clean systems, and understanding how things
-actually work under the hood.
-</p>
-
-<div class="tags">
-<span class="tag">HTML</span>
-<span class="tag">CSS</span>
-<span class="tag">GitHub</span>
-<span class="tag">GitHub Pages</span>
-<span class="tag">IT Fundamentals</span>
-</div>
-
-<div class="links">
-<a href="https://github.com/DCharles57" target="_blank">GitHub</a>
-<!-- later: projects, resume, LinkedIn -->
 </div>
 </div>
+
+</section>
+
+</main>
 </body>
 </html>
 
