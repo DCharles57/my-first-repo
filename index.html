@@ -1,40 +1,176 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>My First Repo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My First Repo</title>
+
 <style>
-body {
+:root{
+--bg: #0b0f1a;
+--card: rgba(255,255,255,.06);
+--stroke: rgba(255,255,255,.14);
+--text: rgba(255,255,255,.92);
+--muted: rgba(255,255,255,.68);
+--accent1: #7c3aed; /* purple */
+--accent2: #22d3ee; /* cyan */
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body{
 margin: 0;
-height: 100vh;
-display: flex;
-justify-content: center;
-align-items: center;
-background: #0f0f0f;
-color: #f5f5f5;
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+color: var(--text);
+background:
+radial-gradient(900px 500px at 20% 15%, rgba(124,58,237,.35), transparent 60%),
+radial-gradient(900px 500px at 80% 25%, rgba(34,211,238,.25), transparent 55%),
+radial-gradient(700px 400px at 50% 90%, rgba(255,255,255,.08), transparent 55%),
+linear-gradient(180deg, #050713 0%, var(--bg) 100%);
+display: grid;
+place-items: center;
+padding: 24px;
+overflow: hidden;
 }
-.card {
+
+/* subtle floating dots */
+.bg-dots{
+position: fixed;
+inset: -40px;
+background-image: radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
+background-size: 28px 28px;
+filter: blur(.2px);
+opacity: .25;
+mask-image: radial-gradient(circle at center, black 35%, transparent 70%);
+pointer-events: none;
+transform: translateZ(0);
+animation: drift 14s ease-in-out infinite alternate;
+}
+
+@keyframes drift{
+from { transform: translate(-6px,-10px) scale(1.02); }
+to { transform: translate(10px, 8px) scale(1.04); }
+}
+
+.wrap{
+width: min(880px, 100%);
+display: grid;
+gap: 18px;
+justify-items: center;
 text-align: center;
-padding: 2rem 3rem;
+}
+
+.badge{
+display: inline-flex;
+align-items: center;
+gap: 10px;
+padding: 10px 14px;
+border: 1px solid var(--stroke);
+border-radius: 999px;
+background: rgba(255,255,255,.04);
+backdrop-filter: blur(10px);
+font-size: 13px;
+color: var(--muted);
+letter-spacing: .2px;
+}
+
+.pulse{
+width: 10px; height: 10px; border-radius: 999px;
+background: linear-gradient(135deg, var(--accent1), var(--accent2));
+box-shadow: 0 0 0 0 rgba(34,211,238,.45);
+animation: pulse 1.8s ease-out infinite;
+}
+@keyframes pulse{
+0% { box-shadow: 0 0 0 0 rgba(34,211,238,.0); }
+35% { box-shadow: 0 0 0 10px rgba(34,211,238,.14); }
+100% { box-shadow: 0 0 0 18px rgba(34,211,238,.0); }
+}
+
+h1{
+margin: 0;
+font-size: clamp(2rem, 4vw, 3.2rem);
+line-height: 1.05;
+letter-spacing: -0.02em;
+}
+
+.grad{
+background: linear-gradient(90deg, #fff, rgba(255,255,255,.86), rgba(34,211,238,.95));
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+}
+
+p{
+margin: 0;
+color: var(--muted);
+font-size: clamp(1rem, 1.7vw, 1.15rem);
+line-height: 1.6;
+max-width: 60ch;
+}
+
+.card{
+width: min(720px, 100%);
+border-radius: 18px;
+background: var(--card);
+border: 1px solid var(--stroke);
+padding: 22px 22px;
+backdrop-filter: blur(14px);
+box-shadow:
+0 20px 50px rgba(0,0,0,.45),
+0 0 0 1px rgba(255,255,255,.03) inset;
+position: relative;
+overflow: hidden;
+transform: translateY(0);
+transition: transform .25s ease, border-color .25s ease;
+}
+
+.card::before{
+content:"";
+position: absolute;
+inset: -2px;
+background: radial-gradient(600px 220px at 30% 10%, rgba(124,58,237,.25), transparent 55%),
+radial-gradient(600px 220px at 70% 0%, rgba(34,211,238,.20), transparent 55%);
+opacity: .9;
+pointer-events: none;
+}
+
+.card:hover{
+transform: translateY(-4px);
+border-color: rgba(255,255,255,.22);
+}
+
+.row{
+display: flex;
+gap: 12px;
+justify-content: center;
+flex-wrap: wrap;
+margin-top: 14px;
+position: relative;
+z-index: 1;
+}
+
+a.btn{
+text-decoration: none;
+display: inline-flex;
+align-items: center;
+gap: 10px;
+padding: 11px 14px;
 border-radius: 12px;
-background: #1a1a1a;
-box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+border: 1px solid rgba(255,255,255,.18);
+background: rgba(255,255,255,.06);
+color: var(--text);
+font-size: 14px;
+transition: transform .2s ease, background .2s ease, border-color .2s ease;
 }
-h1 {
-margin-bottom: 0.5rem;
-font-size: 2.2rem;
+
+a.btn:hover{
+transform: translateY(-2px);
+background: rgba(255,255,255,.10);
+border-color: rgba(255,255,255,.26);
 }
-p {
-opacity: 0.8;
-}
-</style>
-</head>
-<body>
-<div class="card">
-<h1>Hello World 👋</h1>
-<p>My first deployed site.</p>
-</div>
-</body>
-</html>
+
+.primary{
+border: none !important;
+background: linear-gradient(
+
